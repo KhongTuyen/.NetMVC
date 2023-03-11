@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup" style="margin-top:0px;margin-bottom:0px">
+        <div class="container_1">
+            <div class="signup-content" style="padding:0px;margin-top:-100px">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form" style="margin-top:-20px">
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="name" id="name" placeholder="Your Name" /><span style="color:red" id="name_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Your Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="pass" id="pass" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                        </div>
+                      
+                        <div class="form-group form-button">
+                            <button type="submit" name="signup" id="btn_signup" class="form-submit" style="margin-top:10px" value="Register">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="~/Images/signup-image.jpg" alt="sing up image"></figure>
+                    <a href="/Login/Index" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+<script>
+    document.getElementById("btn_signup").addEventListener('click', function () {
+        var name = document.getElementById("name").innerHTML;
+        var name_error = document.getElementById("name_error");
+        if (name == "") {
+            name_error.innerHTML = "vv"
+        }
+    });
+   
+</script>

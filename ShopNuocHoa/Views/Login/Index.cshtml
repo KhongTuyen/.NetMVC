@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+<div class="main">
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content" style="padding-top: 0px; padding-bottom: 0px; margin-top: -50px">
+                <div class="signin-image">
+                    <figure><img src="~/Images/signin-image.jpg" alt="sing up image"></figure>
+                   
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Sign in</h2>
+                    @using (Html.BeginForm("Login", "Login"))
+                    {
+                        <div class="form-group">
+                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="username" id="name" placeholder="User name" />
+                            <span style="color:red" id="name_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="pass" placeholder="Password" />
+                            
+                        </div>
+                        <p style="color:red;font-weight:bold">@ViewBag.error </p>
+                    
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                            <span style="margin-left:50px;padding-top:10px"> <a href="/Login/Register" style="font-weight: bold" >Create an account</a></span>
+                           
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@*<script>
+    document.getElementById("signin").addEventListener('click', function () {
+        var name = document.getElementById("name").innerHTML;
+        var name_error = document.getElementById("name_error");
+        if (name == "") {
+            name_error.innerHTML = "The field is require."
+        }
+    });
+</script>*@

@@ -1,0 +1,65 @@
+﻿@model ShopNuocHoa.Models.category
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2 style="margin-left:40%">CREATE</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-md-4" style="text-align:center">
+                    @Html.Label("ID")
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.id_category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-md-4" style="text-align:center">
+                    @Html.Label("Name")
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.name_category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name_category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-md-6">
+                    <input type="submit" value="Create" class="btn btn-default" style="margin-left:25%;background-color:#0094ff" />
+                    <a href="/Admin/Category"><input type="button" value="Back" class="btn btn-default" style="background-color:#0094ff" /></a>
+
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>
+@if (ViewBag.error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.error</div>
+}

@@ -1,0 +1,62 @@
+﻿@model ShopNuocHoa.Models.product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_SingleProduct.cshtml";
+}
+
+        <div class="single-product">
+            <div style="height: 700px; width: 100%; text-transform: capitalize;">
+                <div style="display:flex;">
+                    <div style="width:500px">
+
+                        @{
+                            string path = "~/Images/" + Model.image;
+                        }
+                        <img class="img-thumbnail" src="@Url.Content(path)" alt="#" style="width:100%">
+
+                    </div>
+                    <div style="margin-left:20px;width:300px">
+
+                        <div><h3>@Model.name_product</h3></div>
+                        <br />
+                        <div style="font-size:23px">
+                            <div>Giá cũ: <strike style="font-weight:bold">$@Model.old_price</strike></div>
+                            <br />
+                            <div>Giá mới:<span style="color:#ff6a00">$@Model.new_price</span></div>
+                            <br />
+                            <div>Category:<u>@Model.category.name_category  </u></div>
+                            <br />
+                            <div>
+
+                                @if (Session["user"] == null)
+                                {
+                                    <button onclick="login()" style="background-color: #F7941D;height:40px;width:100px">Add to cart</button>
+
+                                }
+                                @if (Session["user"] != null)
+                                {
+                                    @*  <a title="Add to cart" href="#">Add to cart</a>*@
+                                    <button style="background-color: #F7941D;height:40px;width:100px">Add to cart</button>
+                                }
+                                <a href="/Home/Index"><input type="button" value="Back to list" style="height:40px;width:100px" /></a>
+                            </div>
+                            
+
+                           
+                            <br />
+
+                        </div>
+                        <br/>
+                        <div style="font-size:18px"><ins style="font-size:23px">Description:</ins>@Model.Description</div>
+
+                    </div>
+
+
+
+                </div>
+               
+            </div>
+
+        </div>
+   

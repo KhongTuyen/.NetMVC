@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<ShopNuocHoa.Models.product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AllProduct.cshtml";
+}
+
+<div class="row">
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+
+            <div class="single-product">
+                <div class="product-img" style="height:200px;">
+                    <a href="/Products/Details/@item.id_product.Trim()">
+                        @{
+                            string path = "~/Images/" + item.image;
+                        }
+                        @* <img src="@Url.Content(path)" width="100" class="img-thumbnail" />
+                            @Html.DisplayFor(modelItem => item.image)*@
+                        <img class="default-img" src="@Url.Content(path)" alt="#">
+
+                    </a>
+                    <div class="button-head">
+
+                        <div class="product-action-2">
+                            @if (Session["user"] == null)
+                            {
+                                <a title="Add to cart" onclick="login()" href="#">Add to cart</a>
+
+                            }
+                            @if (Session["user"] != null)
+                            {
+                                <a title="Add to cart" href="#">Add to cart</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3><a href="/Products/Details/@item.id_product.Trim()">@item.name_product</a></h3>
+                    <div class="product-price">
+                        <strike style="font-weight:bold">$@item.old_price</strike><span style="margin-left:20px;color:#ff6a00">$@item.new_price</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+<div style="margin-top:30px;text-align:center">
+
+    Trang @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

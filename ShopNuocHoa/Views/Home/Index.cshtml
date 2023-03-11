@@ -1,0 +1,158 @@
+﻿
+@model IEnumerable<ShopNuocHoa.Models.product>
+
+@{
+    ViewBag.Title = "Home Page";
+    var blogs =(List<ShopNuocHoa.Models.blog>)ViewBag.Blog;
+}
+
+
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>HOT</h2>
+                </div>
+            </div>
+           @* <div class="col-4">
+                Kết quả tìm kiếm với từ khóa " @ViewBag.search "
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-info">
+                    <div class="nav-main">
+                        <!-- Tab Nav -->
+                        <!--/ End Tab Nav -->
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show active" id="man" role="tabpanel">
+                            <div class="tab-single">
+
+                                <div class="row">
+
+                                    @*------ single-prduct*@
+                                    @foreach (var item in Model)
+                                    {
+
+
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+
+                                            <div class="single-product">
+                                                <div class="product-img"  style="height:200px;">
+                                                    <a href="/Products/Details/@item.id_product.Trim()">
+                                                        @{
+                                                            string path = "~/Images/" + item.image;
+                                                        }
+                                                       @* <img src="@Url.Content(path)" width="100" class="img-thumbnail" />
+                                                        @Html.DisplayFor(modelItem => item.image)*@
+                                                        <img class="default-img" src="@Url.Content(path)" alt="#">
+
+                                                    </a>
+                                                    <div class="button-head">
+
+                                                        <div class="product-action-2">
+                                                            
+                                                            @if (Session["user"] == null)
+                                                            {                                                           
+                                                                <a title="Add to cart" onclick="login()" href="#">Add to cart</a>
+
+                                                            }
+                                                            @if (Session["user"] != null)
+                                                            {
+                                                                <a title="Add to cart" href="/ShoppingCart/AddtoCart/@item.id_product">Add to cart</a>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="/Products/Details/@item.id_product.Trim()">@item.name_product</a></h3>
+                                                    <div class="product-price">
+                                                        <strike style="font-weight:bold">$@item.old_price</strike><span style="margin-left:20px;color:#ff6a00">$@item.new_price</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    @*-----------*@
+
+
+                                    @*single-product*@
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="cown-down">
+    <div class="section-inner ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-12 padding-right">
+                    <div class="image">
+                        <img src="https://img.freepik.com/premium-vector/hot-summer-sale-banner-discount-offer-flyer-with-beach-ocean-tropical-palm-leaves-fruits-ice-cream_461812-520.jpg?w=2000" alt="#">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 padding-left">
+                    <div class="content">
+                        <div class="heading-block">
+                            <p class="small-title">Deal of day</p>
+                            <h3 class="title">Beatutyful dress for women</h3>
+                            <p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
+                            <h1 class="price">$1200 <s>$1890</s></h1>
+                            <div class="coming-time">
+                                <div class="clearfix" data-countdown="2023/11/30"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="shop-blog section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>BLOG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in blogs)
+            {
+
+                <div class="col-lg-4 col-md-6 col-12">
+
+                    <!-- Start Single Blog  -->
+                    <div class="shop-single-blog">
+                        @{
+                            string path = "~/Images/" + item.image;
+                        }
+                        <img src="@Url.Content(path)" alt="#" class="img-thumbnail" >
+                        <div class="content">
+
+                            <a href="/blogs/Details/@item.id_blog" class="title">@item.name_blog</a>
+                            <a href="/blogs/Details/@item.id_blog" class="more-btn">Continue Reading</a>
+                        </div>
+                    </div>
+                    <!-- End Single Blog  -->
+                </div>
+            }
+    
+                <!-- End Single Blog  -->
+           
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,26 @@
+﻿
+@model List<ShopNuocHoa.Models.blog>
+
+@foreach (var item in Model)
+{
+    <div class="single-post first">
+        <div class="image">
+            @{
+                string path = "~/Images/" + item.image;
+            }
+            <img src="@Url.Content(path)" alt="#">
+        </div>
+        <div class="content">
+            <h5><a href="/blogs/Details/@item.id_blog">@item.name_blog</a></h5>
+            <p class="price">$ ?9.000</p>
+            <ul class="reviews">
+                <li class="yellow"><i class="ti-star"></i></li>
+                <li class="yellow"><i class="ti-star"></i></li>
+                <li class="yellow"><i class="ti-star"></i></li>
+                <li class="yellow"><i class="ti-star"></i></li>
+                <li class="yellow"><i class="ti-star"></i></li>
+                
+            </ul>
+        </div>
+    </div>
+}

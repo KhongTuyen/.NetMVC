@@ -1,0 +1,20 @@
+﻿@model List<ShopNuocHoa.Models.blog>
+
+@foreach (var item in Model)
+{
+    <div class="single-post">
+        <div class="image">
+            @{
+                string path = "~/Images/" + item.image;
+            }
+            <img src="@Url.Content(path)" alt="#">
+        </div>
+        <div class="content">
+            <h5><a href="/blogs/Details/@item.id_blog">@item.name_blog</a></h5>
+            <ul class="comment">
+                <li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2024</li>
+                <li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
+            </ul>
+        </div>
+    </div>
+}

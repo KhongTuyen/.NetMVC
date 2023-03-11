@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ShopNuocHoa.Models.category>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Category</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Category</li>
+            </ol>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    DataTable Category
+                </div>
+                <div class="card-body">
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            
+                            <th>
+                                <div style="border-radius:5px 5px 5px 5px;height:30px;width:70px;background-color:#d0c8c8">
+                                    <div class="sb-nav-link-icon"><a href="/Admin/Category/Create" style="text-decoration:none"><i class="fas fa-plus" style="margin-right:2px"></i>Create</a></div>
+                                </div>
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.id_category)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name_category)
+                                </td>
+                              
+                                <td>
+                                    <div style="display:flex;margin-left:20px">
+                                        <div class="sb-nav-link-icon"><a href="/Admin/Category/Edit/@item.id_category"><i class="fas fa-edit"></i></a></div> &nbsp;|&nbsp;
+                                        <div class="sb-nav-link-icon"><a href="/Admin/Category/Delete/@item.id_category"><i class="fas fa-trash"></i></a></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

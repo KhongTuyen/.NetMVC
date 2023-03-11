@@ -1,0 +1,12 @@
+﻿
+@model List<ShopNuocHoa.Models.category>
+<ul class="categor-list">
+
+    @foreach (var item in Model)
+    {
+      
+        <li><a href="/Products/ProductByCate/@item.id_category" style="color: #F7941D">@item.name_category</a></li>
+    }
+
+</ul>
+
